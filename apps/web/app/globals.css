@@ -1,0 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800;900&display=swap');
+@import "tailwindcss";
+
+:root { --ink:#263547; --muted:#8292a3; --paper:#fffdf8; --coral:#ff8074; --yellow:#ffd95f; --blue:#8bd5ee; --green:#a4d98a; --purple:#c1a5f4; }
+* { box-sizing:border-box; }
+html { min-height:100%; background:#fffdf8; }
+body { margin:0; color:var(--ink); font-family:'Nunito',sans-serif; background:radial-gradient(ellipse at 10% 2%,#fff0dc 0,transparent 27%),radial-gradient(ellipse at 94% 38%,#e7f6e5 0,transparent 23%),#fffdf8; min-height:100vh; }
+button,input,textarea,select { font:inherit; }
+button { cursor:pointer; }
+.font-play { font-family:'Fredoka','Nunito',sans-serif; }
+.kid-shell { width:min(1120px,calc(100% - 40px)); margin:0 auto; }
+.surface { background:rgba(255,255,255,.88); border:1px solid #f0ece3; border-radius:26px; box-shadow:0 10px 34px rgba(53,63,76,.06); }
+.lift { transition:transform .18s ease,box-shadow .18s ease; }
+.lift:hover { transform:translateY(-4px); box-shadow:0 15px 30px rgba(53,63,76,.12); }
+.teacher-grid { display:grid; grid-template-columns:repeat(12,minmax(0,1fr)); gap:18px; }
+.dash-card { border:1px solid #edf0f2; background:white; border-radius:20px; padding:22px; box-shadow:0 5px 20px rgba(39,56,75,.04); }
+.soft-scroll::-webkit-scrollbar { width:8px;height:8px; }.soft-scroll::-webkit-scrollbar-thumb { background:#ddd5c7;border-radius:9px; }
+@media(max-width:700px) { .kid-shell{width:min(100% - 28px,560px)} }
