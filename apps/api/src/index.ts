@@ -67,9 +67,9 @@ app.post("/api/admin/login", rateLimit({ windowMs: 15 * 60_000, limit: 8, standa
     res.status(401).json({ error: "Nama pengguna atau kata sandi belum cocok." }); return;
   }
   const token = jwt.sign({ role: "teacher" }, JWT_SECRET, { expiresIn: "12h" });
-  res.cookie(COOKIE, token, { httpOnly: true, secure: process.env.COOKIE_SECURE === "true", sameSite: "lax", maxAge: 12 * 60 * 60 * 1000, path: "/" }).json({ ok: true });
+  res.cookie(COOKIE, token, { httpOnly: true, secure: process.env.COOKIE_SECURE === "true", sameSite: process.env.COOKIE_SECURE === "true" ? "none" : "lax", maxAge: 12 * 60 * 60 * 1000, path: "/" }).json({ ok: true });
 });
-app.post("/api/admin/logout", (_req, res) => { res.clearCookie(COOKIE, { httpOnly: true, sameSite: "lax", path: "/" }).json({ ok: true }); });
+app.post("/api/admin/logout", (_req, res) => { res.clearCookie(COOKIE, { httpOnly: true, secure: process.env.COOKIE_SECURE === "true", sameSite: process.env.COOKIE_SECURE === "true" ? "none" : "lax", path: "/" }).json({ ok: true }); });
 app.get("/api/admin/me", teacherOnly, (_req, res) => res.json({ authenticated: true }));
 app.get("/api/admin/overview", teacherOnly, async (_req, res, next) => {
   try {
